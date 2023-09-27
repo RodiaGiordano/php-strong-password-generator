@@ -1,9 +1,23 @@
 <?php 
 include __DIR__ . "/function.php";
 
-$last_input = isset($_GET['length']) ? $_GET['length'] : '';
+$last_input = isset($_GET['length']) ? (int)$_GET['length'] : '';
 
-var_dump($last_input)
+
+function generated_random_str($bytes){
+    $bytes /= 2;
+
+    
+
+    $random_bytes = openssl_random_pseudo_bytes($bytes);
+    
+    $random_password = bin2hex($random_bytes);
+    
+    echo $random_password;
+    
+    var_dump($random_password);
+}
+
 ?>
 
 
@@ -30,8 +44,10 @@ var_dump($last_input)
                     <label for="formGroupExampleInput" class="form-label fw-bold mb-3">Inserisci la lunghezza della password che vuoi generare</label>
                     <input type="number" min="1" step="1" name="length" value="<?= $last_input ?? '' ?>" class="form-control" id="formGroupExampleInput" placeholder="Inserisci lunghezza">
                     <button type="submit" class="btn btn-primary">Genera</button>
+                    <?php generated_random_str($last_input) ?>
+                    
                 </form>
-
+    
             </div>
         </div>
     </div>

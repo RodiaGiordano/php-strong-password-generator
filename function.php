@@ -1,8 +1,5 @@
-<?php
-
-function ciao(){
- 
+<!-- function ciao(){
+    echo 'ciao';
 }
 
-?>
-
+?> -->
